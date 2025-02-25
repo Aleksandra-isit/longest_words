@@ -1,6 +1,7 @@
 CC = g++
 CFLAGS = -Wall -std=c++11
 TARGET = longest_words
+SRC = longest_words.cpp
 PREFIX ?= /usr
 
 # Список необходимых пакетов
@@ -8,12 +9,14 @@ REQUIRED_LIBS = build-essential
 
 all: check_compiler check_dependencies $(TARGET)
 
-$(TARGET): longest_words.cpp
-	$(CC) $(CFLAGS) -o $(TARGET) longest_words.cpp
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
 
 install: $(TARGET)
-	install -d "$(DESTDIR)$(PREFIX)/bin"
-	install -m 755 $(TARGET) "$(DESTDIR)$(PREFIX)/bin/$(TARGET)"
+	install -d "../usr/bin"
+	install -m 755 $(TARGET) "../usr/bin/$(TARGET)"
+
+
 
 clean:
 	rm -f $(TARGET)

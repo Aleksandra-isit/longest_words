@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: longest_words
+Source: https://github.com/Aleksandra-isit/TPPiSPO.git
+
+Files: *
+Copyright: 2025 Your Name <cheresasha@gmail.com>
+License: MIT

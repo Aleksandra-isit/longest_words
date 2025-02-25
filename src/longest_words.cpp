@@ -3,6 +3,7 @@
 #include <sstream>
 #include <algorithm>
 
+// Функция для разделения текста на фразы (по точкам)
 std::vector<std::string> splitIntoPhrases(const std::string &text) {
     std::vector<std::string> phrases;
     std::stringstream ss(text);
@@ -15,12 +16,14 @@ std::vector<std::string> splitIntoPhrases(const std::string &text) {
     return phrases;
 }
 
+// Функция для поиска самых длинных слов в фразе
 std::vector<std::string> findLongestWords(const std::string &phrase) {
     std::vector<std::string> words;
     std::stringstream ss(phrase);
     std::string word;
     size_t max_length = 0;
 
+    // Разбиваем фразу на слова и ищем самое длинное
     while (ss >> word) {
         if (word.length() > max_length) {
             max_length = word.length();
@@ -34,6 +37,7 @@ std::vector<std::string> findLongestWords(const std::string &phrase) {
     return words;
 }
 
+// Функция для сбора самых длинных слов из всех фраз
 std::string collectLongestWords(const std::string &text) {
     std::vector<std::string> phrases = splitIntoPhrases(text);
     std::string result;
@@ -51,23 +55,26 @@ std::string collectLongestWords(const std::string &text) {
     return result;
 }
 
-int main() {
+// Главная функция программы
+int main(int argc, char* argv[]) {
     std::string text;
-    std::cout << "Введите текст: ";
-    std::getline(std::cin, text);
+
+    // Если передан аргумент командной строки, используем его
+    if (argc > 1) {
+        text = argv[1];
+    } else {
+        std::cerr << "Ошибка: не передан аргумент." << std::endl;
+        return 1;
+    }
 
     if (text.empty()) {
         std::cerr << "Ошибка: Введен пустой текст." << std::endl;
         return 1;
     }
 
-    if (text.length() > 1000) {
-        std::cerr << "Ошибка: Текст слишком длинный. Максимальная длина - 1000 символов." << std::endl;
-        return 1;
-    }
-
+    // Собираем и выводим самые длинные слова из фраз
     std::string longestWords = collectLongestWords(text);
-    std::cout << "Самые длинные слова из каждой фразы: " << longestWords << std::endl;
+    std::cout << longestWords << std::endl;  // Выводим только результат
 
     return 0;
 }

@@ -1,0 +1,12 @@
+Source: longest-words
+Section: utils
+Priority: optional
+Maintainer: Aleksandra Cherepukhina <cheresasha@gmail.com>
+Build-Depends: debhelper (>= 12), g++, build-essential
+Standards-Version: 4.6.0
+
+Package: longest-words
+Architecture: all
+Depends: ${misc:Depends}, build-essential, g++
+Description: A simple program to find the longest words in phrases.
+ This package provides a tool to extract the longest words from each phrase in a given text.
