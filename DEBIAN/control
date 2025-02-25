@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 12), g++, build-essential
 Standards-Version: 4.6.0
 
 Package: longest-words
+Version: 1.0
 Architecture: all
 Depends: ${misc:Depends}, build-essential, g++
 Description: A simple program to find the longest words in phrases.
