@@ -54,6 +54,10 @@ jobs:
           name: longest_words_binary
           path: usr/bin
 
+      - name: Clean up unnecessary files
+        run: |
+          rm -rf .git
+
       - name: Package into .deb
         run: |
           dpkg-deb --build . longest-words_1.0_all.deb
@@ -63,3 +67,4 @@ jobs:
         with:
           name: longest-words
           path: longest-words_1.0_all.deb
+
