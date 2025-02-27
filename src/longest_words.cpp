@@ -63,8 +63,8 @@ int main(int argc, char* argv[]) {
     if (argc > 1) {
         text = argv[1];
     } else {
-        std::cerr << "Ошибка: не передан аргумент." << std::endl;
-        return 1;
+        std::cout << "Введите текст: ";
+        std::getline(std::cin, text);
     }
 
     if (text.empty()) {
