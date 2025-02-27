@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check GCC Version
+        run: g++ --version
+
       - name: Build the project
         run: |
           cd src
