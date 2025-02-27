@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check GCC Version
+        run: g++ --version
+
       - name: Build the project
         run: |
           cd src
@@ -64,11 +67,11 @@ jobs:
 
       - name: Package into .deb
         run: |
-          dpkg-deb --build . longest-words_2.0_all.deb
+          dpkg-deb --build . longest-words_4.0_all.deb
 
       - name: Upload .deb artifact
         uses: actions/upload-artifact@v4
         with:
           name: longest-words
-          path: longest-words_2.0_all.deb
+          path: longest-words_4.0_all.deb
 
