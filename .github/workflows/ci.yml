@@ -58,10 +58,6 @@ jobs:
           name: longest_words_binary
           path: usr/bin
 
-      - name: Prepare DEBIAN directory
-        run: |
-          mv debian DEBIAN
-
       - name: Clean up unnecessary files
         run: |
           rm -rf .git
