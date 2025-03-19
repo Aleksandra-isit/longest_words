@@ -23,4 +23,4 @@ RUN chmod +x /usr/bin/longest_words || echo "Не удалось сделать 
 RUN find / -name longest_words || echo "Файл не найден в системе"
 
 # Команда запуска с параметром (например, с текстом для обработки)
-CMD sh -c "/usr/bin/longest_words 2 || (echo 'Программа завершилась с ошибкой' && exit 1)"
+CMD sh -c "/usr/bin/longest_words 2 3 4 5 || (echo 'Программа завершилась с ошибкой' && exit 1)"
