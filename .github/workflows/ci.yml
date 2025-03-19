@@ -75,24 +75,29 @@ jobs:
           name: longest-words
           path: longest-words_4.0_all.deb
 
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: RunPackage
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+Deploy:
+  runs-on: ubuntu-latest
+  needs: RunPackage
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Download .deb package
-        uses: actions/download-artifact@v4
-        with:
-          name: longest-words
-          path: /tmp
+    - name: Download .deb package
+      uses: actions/download-artifact@v4
+      with:
+        name: longest-words
+        path: /tmp
 
-      - name: Build Docker image
-        run: |
-          docker build -t longest-words /tmp
+    - name: Copy Dockerfile to /tmp
+      run: |
+        cp Dockerfile /tmp/Dockerfile  # Копируем Dockerfile в /tmp
 
-      - name: Run Docker container
-        run: |
-          docker run --rm longest-words || echo "Ошибка при запуске контейнера"
+    - name: Build Docker image
+      run: |
+        docker build -t longest-words /tmp
+
+    - name: Run Docker container
+      run: |
+        docker run --rm longest-words || echo "Ошибка при запуске контейнера"
+
 
