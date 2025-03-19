@@ -75,3 +75,24 @@ jobs:
           name: longest-words
           path: longest-words_4.0_all.deb
 
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: RunPackage
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download .deb package
+        uses: actions/download-artifact@v4
+        with:
+          name: longest-words
+          path: .
+
+      - name: Build Docker image
+        run: |
+          docker build -t longest-words .
+
+      - name: Run Docker container
+        run: |
+          docker run --rm longest-words
+
