@@ -21,3 +21,4 @@ RUN chmod +x /usr/bin/longest_words
 
 # Запускаем программу
 CMD ["/usr/bin/longest_words"]
+
