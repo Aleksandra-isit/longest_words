@@ -7,5 +7,5 @@ Standards-Version: 4.6.0
 Package: longest-words
 Version: 4.0
 Architecture: all
-Depends: build-essential, g++
+Depends: build-essential, g++, libstdc++6 (>= 10)
 Description: A simple program to find the longest words in phrases. This package provides a tool to extract the longest words from each phrase in a given text.

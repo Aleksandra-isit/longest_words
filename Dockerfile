@@ -3,12 +3,11 @@ FROM ubuntu:22.04
 
 # Устанавливаем обновления и необходимые утилиты
 RUN apt-get update && apt-get install -y \
-    bash \
-    ca-certificates \
     build-essential \
     g++ \
     libstdc++6 \
     && rm -rf /var/lib/apt/lists/*
+
 
 # Копируем .deb пакет в контейнер
 COPY longest-words_4.0_all.deb /tmp/
