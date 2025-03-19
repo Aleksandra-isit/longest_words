@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     build-essential \
     g++ \
+    libstdc++6 \
     && rm -rf /var/lib/apt/lists/*
 
 # Копируем .deb пакет в контейнер
