@@ -15,7 +15,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential g++ # Устанавливаем компилятор и необходимые зависимости
+          sudo apt-get install -y build-essential g++
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+          sudo apt-get update
+          sudo apt-get install --only-upgrade libstdc++6
 
       - name: Check GCC Version
         run: g++ --version
