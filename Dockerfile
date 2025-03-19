@@ -1,27 +1,27 @@
-# Используем официальный образ Ubuntu 22.04
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
-# Устанавливаем обновления и необходимые утилиты
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    g++ \
-    libstdc++6 \
-    && rm -rf /var/lib/apt/lists/*
+# Устанавливаем зависимости
+RUN apt-get update && \
+    apt-get install -y build-essential g++ \
+    && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
+    && apt-get update \
+    && apt-get install --only-upgrade libstdc++6 \
+    && apt-get install -y wget
 
-
-# Копируем .deb пакет в контейнер
+# Копируем .deb файл в контейнер
 COPY longest-words_4.0_all.deb /tmp/
 
-# Распаковываем .deb пакет для проверки содержимого
-RUN dpkg-deb -c /tmp/longest-words_4.0_all.deb
-
-# Устанавливаем .deb пакет, если возникают проблемы с зависимостями — исправляем их
+# Устанавливаем пакет
 RUN dpkg -i /tmp/longest-words_4.0_all.deb || apt-get install -f -y
 
-# Проверяем наличие исполнимого файла и его доступность
+# Проверяем наличие бинарника
 RUN ls -l /usr/bin/longest_words || echo "Файл не найден в /usr/bin/"
+
+# Делаем бинарник исполнимым
 RUN chmod +x /usr/bin/longest_words || echo "Не удалось сделать файл исполнимым"
+
+# Проверяем, что бинарник доступен в системе
 RUN find / -name longest_words || echo "Файл не найден в системе"
 
-# Запускаем контейнер с программой (если необходимо)
+# Запускаем программу (или просто оставим для тестирования контейнера)
 CMD ["/usr/bin/longest_words"]
