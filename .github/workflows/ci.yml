@@ -2,7 +2,6 @@ name: Build and Package Longest Words
 
 on:
   pull_request:
-    # Sequence of patterns matched against refs/heads
     branches:
       - main
 
@@ -12,6 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential g++ # Устанавливаем компилятор и необходимые зависимости
 
       - name: Check GCC Version
         run: g++ --version
@@ -99,5 +103,3 @@ jobs:
       - name: Run Docker container
         run: |
           docker run --rm longest-words || echo "Ошибка при запуске контейнера"
-
-

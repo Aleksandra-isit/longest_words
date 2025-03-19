@@ -1,4 +1,4 @@
-CC = g++-10
+CC = g++
 CFLAGS = -Wall -std=c++11
 TARGET = longest_words
 SRC = longest_words.cpp
