@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
 
     // Собираем и выводим самые длинные слова из фраз
     std::string longestWords = collectLongestWords(text);
-    std::cout << longestWords << std::endl;  // Выводим только результат
+    std::cout << "Самое длинное слово(а):\t" << longestWords << std::endl;  // Выводим только результат
 
     return 0;
 }
