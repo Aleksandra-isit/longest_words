@@ -2,11 +2,10 @@ FROM ubuntu:latest
 
 # Устанавливаем зависимости
 RUN apt-get update && \
-    apt-get install -y build-essential g++ \
+    apt-get install -y build-essential g++ software-properties-common wget \
     && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
     && apt-get update \
-    && apt-get install --only-upgrade libstdc++6 \
-    && apt-get install -y wget
+    && apt-get install --only-upgrade libstdc++6
 
 # Копируем .deb файл в контейнер
 COPY longest-words_4.0_all.deb /tmp/
