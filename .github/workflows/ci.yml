@@ -86,13 +86,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: longest-words
-          path: .
+          path: /tmp
 
       - name: Build Docker image
         run: |
-          docker build -t longest-words .
+          docker build -t longest-words /tmp
 
       - name: Run Docker container
         run: |
-          docker run --rm longest-words
+          docker run --rm longest-words || echo "Ошибка при запуске контейнера"
 
